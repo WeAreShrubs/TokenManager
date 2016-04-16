@@ -41,7 +41,7 @@ public class ProfileUtil {
     }
 
     public static String getName(UUID uuid) {
-        if (Bukkit.getOnlineMode() || Bukkit.spigot().getConfig().getBoolean("settings.bungeecord")) {
+        if (Bukkit.getOnlineMode() || spigotCfg.getBoolean("settings.bungeecord")) {
             if (Bukkit.getPlayer(uuid) != null) {
                 return Bukkit.getPlayer(uuid).getName();
             }

@@ -1,8 +1,5 @@
 package me.realized.tm;
 
-import be.maximvdw.placeholderapi.PlaceholderAPI;
-import be.maximvdw.placeholderapi.PlaceholderReplaceEvent;
-import be.maximvdw.placeholderapi.PlaceholderReplacer;
 import me.realized.tm.commands.TMCommand;
 import me.realized.tm.commands.TokenCommand;
 import me.realized.tm.configuration.TMConfig;
@@ -10,7 +7,6 @@ import me.realized.tm.listeners.PlayerListener;
 import me.realized.tm.management.DataManager;
 import me.realized.tm.management.ShopManager;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -53,21 +49,6 @@ public class Core extends JavaPlugin {
         PluginManager manager = Bukkit.getPluginManager();
 
         manager.registerEvents(new PlayerListener(this), this);
-
-        if (manager.isPluginEnabled("MVdWPlaceholderAPI")) {
-            PlaceholderAPI.registerPlaceholder(this, "tm_tokens", new PlaceholderReplacer() {
-                @Override
-                public String onPlaceholderReplace(PlaceholderReplaceEvent placeholderReplaceEvent) {
-                    Player player = placeholderReplaceEvent.getPlayer();
-
-                    if (player == null) {
-                        return "Player is required.";
-                    }
-
-                    return String.valueOf(dataManager.balance(player.getUniqueId()));
-                }
-            });
-        }
     }
 
     @Override

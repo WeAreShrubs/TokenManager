@@ -173,7 +173,7 @@ public class ShopManager {
     }
 
     public void close() {
-        if (!Bukkit.getOnlinePlayers().isEmpty()) {
+        if (!(Bukkit.getOnlinePlayers().length == 0)) {
             for (Player all : Bukkit.getOnlinePlayers()) {
                 Inventory top = all.getOpenInventory().getTopInventory();
 
@@ -209,7 +209,7 @@ public class ShopManager {
 
     public void handleClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        Inventory clicked = event.getClickedInventory();
+        Inventory clicked = event.getInventory();
         Inventory top = player.getOpenInventory().getTopInventory();
 
         if (clicked == null || top == null) {

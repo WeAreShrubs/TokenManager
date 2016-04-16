@@ -12,6 +12,7 @@ public class Open extends SubCommand {
         super(new String[]{"open"}, "open <username> <shop>", "admin", 3);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void run(CommandSender sender, Command command, String[] args) {
         Player target = Bukkit.getPlayerExact(args[1]);
