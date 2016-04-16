@@ -2,7 +2,7 @@ name: TokenManager
 main: me.realized.tm.Core
 version: 1.8.9
 author: Realized
-softdepends: [MVdWPlaceholderAPI]
+depend: [MVdWPlaceholderAPI]
 description: A simple sub-economy plugin for your server.
 
 commands:

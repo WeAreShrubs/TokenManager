@@ -2,14 +2,19 @@ package me.realized.tm.utilities;
 
 import me.realized.tm.Core;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 
+import java.io.File;
 import java.util.UUID;
 
 public class ProfileUtil {
-
+    //KookyKraftMC Start
+    static File spigotFile = new File(Bukkit.getWorldContainer(), "spigot.yml");//get spigot config file
+    static FileConfiguration spigotCfg = YamlConfiguration.loadConfiguration(spigotFile);//load spigot config file
     @SuppressWarnings("deprecation")
     public static UUID getUniqueId(String username) {
-        if (Bukkit.getOnlineMode() || Bukkit.spigot().getConfig().getBoolean("settings.bungeecord")) {
+        if (Bukkit.getOnlineMode() || spigotCfg.getBoolean("settings.bungeecord")) {//use spigot config file to see if bungeecord is enabled //KookyKraftMC end
             if (Bukkit.getPlayerExact(username) != null) {
                 return Bukkit.getPlayerExact(username).getUniqueId();
             }
